@@ -1,7 +1,7 @@
 # ✨ StockStudio – Your Microstock Assistant
 
 ![GitHub stars](https://img.shields.io/github/stars/your-username/stockstudio?style=social)
-![License: GNU](https://img.shields.io/badge/License-GNU-yellow.svg)
+![License: GPL](https://img.shields.io/badge/License-GPL-yellow.svg)
 ![Platform](https://img.shields.io/badge/platform-Desktop-blueviolet)
 ![Status](https://img.shields.io/badge/status-Active-brightgreen)
 
