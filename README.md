@@ -32,9 +32,6 @@
 - 🪄 **Background Remover**  
   Automatically remove backgrounds from images for clean, professional visuals.
 
-- 🤖 **Discord Bot Integration**  
-  Automate MidJourney prompts directly from the app—perfect for bulk AI image generation.
-
 ---
 
 ## 💼 Ideal For
