@@ -1,0 +1,148 @@
+{
+  "version": "1.0",
+  "nodes": [
+    {
+      "id": "fileImport_initial",
+      "type": "fileImport",
+      "position": {
+        "x": 510,
+        "y": 90
+      },
+      "data": {
+        "label": "2 file(s) selected",
+        "initialNodeType": "fileImport",
+        "selectedFiles": []
+      },
+      "measured": {
+        "width": 200,
+        "height": 135
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "loop_1773835376398",
+      "type": "loop",
+      "position": {
+        "x": 1050,
+        "y": 90
+      },
+      "data": {
+        "label": "Loop",
+        "itemsPerIteration": 1,
+        "currentIteration": 0,
+        "totalIterations": 0
+      },
+      "measured": {
+        "width": 200,
+        "height": 200
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "aiGeneration_1773835387796",
+      "type": "aiGeneration",
+      "position": {
+        "x": 1410,
+        "y": 90
+      },
+      "data": {
+        "label": "AI Generation"
+      },
+      "measured": {
+        "width": 203,
+        "height": 186
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "metadataEditor_1773835399298",
+      "type": "metadataEditor",
+      "position": {
+        "x": 1770,
+        "y": 240
+      },
+      "data": {
+        "label": "Metadata Builder"
+      },
+      "measured": {
+        "width": 200,
+        "height": 173
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "saveFiles_1773835410441",
+      "type": "saveFiles",
+      "position": {
+        "x": 1065,
+        "y": 465
+      },
+      "data": {
+        "label": "Save Files"
+      },
+      "measured": {
+        "width": 203,
+        "height": 170
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "exportCsv_1773835424246",
+      "type": "exportCsv",
+      "position": {
+        "x": 1485,
+        "y": 465
+      },
+      "data": {
+        "label": "Export CSV",
+        "selectedPlatform": "adobe",
+        "outputFolder": "D:\\Download"
+      },
+      "measured": {
+        "width": 200,
+        "height": 246
+      },
+      "selected": false,
+      "dragging": false
+    }
+  ],
+  "edges": [
+    {
+      "id": "fileImport_initial-loop_1773835376398-1773835381525",
+      "source": "fileImport_initial",
+      "target": "loop_1773835376398"
+    },
+    {
+      "id": "loop_1773835376398-aiGeneration_1773835387796-1773835392611",
+      "source": "loop_1773835376398",
+      "target": "aiGeneration_1773835387796",
+      "sourceHandle": "next"
+    },
+    {
+      "id": "aiGeneration_1773835387796-metadataEditor_1773835399298-1773835402869",
+      "source": "aiGeneration_1773835387796",
+      "target": "metadataEditor_1773835399298"
+    },
+    {
+      "id": "metadataEditor_1773835399298-saveFiles_1773835410441-1773835415385",
+      "source": "metadataEditor_1773835399298",
+      "target": "saveFiles_1773835410441"
+    },
+    {
+      "id": "saveFiles_1773835410441-exportCsv_1773835424246-1773835430835",
+      "source": "saveFiles_1773835410441",
+      "target": "exportCsv_1773835424246"
+    },
+    {
+      "id": "exportCsv_1773835424246-loop_1773835376398-1773835434050",
+      "source": "exportCsv_1773835424246",
+      "target": "loop_1773835376398"
+    }
+  ],
+  "exportedAt": "2026-03-18T12:05:38.393Z"
+}
