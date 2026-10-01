@@ -1,0 +1,187 @@
+{
+  "version": "1.0",
+  "nodes": [
+    {
+      "id": "fileImport_initial",
+      "type": "fileImport",
+      "position": {
+        "x": 170,
+        "y": 91
+      },
+      "data": {
+        "label": "Your Folder Files Here",
+        "initialNodeType": "fileImport",
+        "selectedFiles": [],
+        "folderPath": ""
+      },
+      "measured": {
+        "width": 238,
+        "height": 187
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "loop_1774353786877",
+      "type": "loop",
+      "position": {
+        "x": 773,
+        "y": 85
+      },
+      "data": {
+        "label": "Loop",
+        "itemsPerIteration": 1,
+        "currentIteration": 0,
+        "totalIterations": 0
+      },
+      "measured": {
+        "width": 200,
+        "height": 200
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "geminiAnalyzeImage_1774353813802",
+      "type": "geminiAnalyzeImage",
+      "position": {
+        "x": 1164,
+        "y": -58
+      },
+      "data": {
+        "label": "Analyze Image (strict QA)",
+        "imageSource": "variable",
+        "imageValue": "{{context.nodeOutputs.loop_1774353786877.output.currentItems[0]}}",
+        "prompt": "You are a senior microstock metadata editor. Generate metadata that will pass platform review and rank well.\n\nAnalyze the given image content and return ONLY valid JSON:\n{\"title\":\"\",\"description\":\"\",\"keywords\":[],\"category\":\"\"}\n\nHard rules:\n- Title: <= 200 characters, natural buyer phrase, no ALL CAPS, no keyword stuffing, no symbols, no quotes.\n- Description: 1-2 sentences, <= 180 characters, describe subject + style + commercial use.\n- Keywords: 25-49 unique lowercase terms, most relevant first. No duplicates, no singular/plural pairs, no generic filler (image, photo, stock, background alone), no brands, no celebrity names.\n- Category: exactly one of [\"Animals\",\"Buildings and Architecture\",\"Business\",\"Drinks\",\"The Environment\",\"States of Mind\",\"Food\",\"Graphic Resources\",\"Hobbies and Leisure\",\"Industry\",\"Landscapes\",\"Lifestyle\",\"People\",\"Plants and Flowers\",\"Culture and Religion\",\"Science\",\"Social Issues\",\"Sports\",\"Technology\",\"Transport\",\"Travel\"].\n- Commercial safety: never invent text visible in the image, never name logos, never make medical/legal claims.\nReturn ONLY JSON, no markdown. If analysis fails return {\"error\":\"unable to analyze image\"}.",
+        "model": "gemini-2.5-flash"
+      },
+      "measured": {
+        "width": 200,
+        "height": 141
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "metadataEditor_1774353856102",
+      "type": "metadataEditor",
+      "position": {
+        "x": 1173,
+        "y": 256
+      },
+      "data": {
+        "label": "Metadata Builder",
+        "titleInput": "{{context.nodeOutputs.jsonParser_1774353861023.output.parsed.title}}",
+        "descriptionInput": "{{context.nodeOutputs.jsonParser_1774353861023.output.parsed.description}}",
+        "keywordsInput": "{{context.nodeOutputs.jsonParser_1774353861023.output.parsed.keywords}}",
+        "categoryInput": "{{context.nodeOutputs.jsonParser_1774353861023.output.parsed.category}}",
+        "titleEqualsDescription": true,
+        "autoDeleteNegativeKeywords": true,
+        "autoDeleteInTitleDesc": true
+      },
+      "measured": {
+        "width": 295,
+        "height": 209
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "jsonParser_1774353861023",
+      "type": "jsonParser",
+      "position": {
+        "x": 1759,
+        "y": -58
+      },
+      "data": {
+        "label": "JSON Parser",
+        "jsonInput": "{{context.nodeOutputs.geminiAnalyzeImage_1774353813802.output.text}}"
+      },
+      "measured": {
+        "width": 200,
+        "height": 141
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "saveFiles_1774354069568",
+      "type": "saveFiles",
+      "position": {
+        "x": 1773,
+        "y": 386
+      },
+      "data": {
+        "label": "Save Files",
+        "handleOrientation": "vertical"
+      },
+      "measured": {
+        "width": 203,
+        "height": 170
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "exportCsv_1774354079697",
+      "type": "exportCsv",
+      "position": {
+        "x": 1566,
+        "y": 678
+      },
+      "data": {
+        "label": "Export CSV",
+        "selectedPlatform": "adobe",
+        "handleOrientation": "vertical",
+        "outputFolder": "D:\\\\Download",
+        "exportMode": "append",
+        "customFileName": "metadata-strict-qa"
+      },
+      "measured": {
+        "width": 200,
+        "height": 246
+      },
+      "selected": false,
+      "dragging": false
+    }
+  ],
+  "edges": [
+    {
+      "id": "fileImport_initial-loop_1774353786877-1774353791194",
+      "source": "fileImport_initial",
+      "target": "loop_1774353786877"
+    },
+    {
+      "id": "loop_1774353786877-geminiAnalyzeImage_1774353813802-1774353817386",
+      "source": "loop_1774353786877",
+      "target": "geminiAnalyzeImage_1774353813802",
+      "sourceHandle": "next"
+    },
+    {
+      "id": "geminiAnalyzeImage_1774353813802-jsonParser_1774353861023-1774353996693",
+      "source": "geminiAnalyzeImage_1774353813802",
+      "target": "jsonParser_1774353861023"
+    },
+    {
+      "id": "jsonParser_1774353861023-metadataEditor_1774353856102-1774354024319",
+      "source": "jsonParser_1774353861023",
+      "target": "metadataEditor_1774353856102"
+    },
+    {
+      "id": "metadataEditor_1774353856102-saveFiles_1774354069568-1774354073288",
+      "source": "metadataEditor_1774353856102",
+      "target": "saveFiles_1774354069568"
+    },
+    {
+      "id": "saveFiles_1774354069568-exportCsv_1774354079697-1774354094475",
+      "source": "saveFiles_1774354069568",
+      "target": "exportCsv_1774354079697"
+    },
+    {
+      "id": "exportCsv_1774354079697-loop_1774353786877-1774354104335",
+      "source": "exportCsv_1774354079697",
+      "target": "loop_1774353786877"
+    }
+  ],
+  "exportedAt": "2026-10-01T05:15:14.450Z"
+}
