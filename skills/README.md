@@ -13,6 +13,8 @@ reads `SKILL.md`.
 | [`stock-prompt-generator`](stock-prompt-generator/SKILL.md) | Keyword cluster → consistent, commercially-safe generation prompts | Between research and production |
 | [`stock-metadata-qa`](stock-metadata-qa/SKILL.md) | Validate and auto-repair titles/keywords/categories | After AI metadata, before upload |
 | [`stock-video-research`](stock-video-research/SKILL.md) | Watch a video (frames + transcript) and answer grounded in it | Analyzing competitor or reference video |
+| [`stock-batch-planner`](stock-batch-planner/SKILL.md) | Research → capacity-aware production plan with cost, schedule, QA gates | Scheduling a week/month of production |
+| [`stock-upload-checklist`](stock-upload-checklist/SKILL.md) | Final pre/post-upload gate: integrity, releases, CSV match, log | Right before and after uploading |
 
 ## Install
 
