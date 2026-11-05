@@ -18,7 +18,25 @@ reads `SKILL.md`.
 
 ## Install
 
-Copy any skill folder into your agent's skills directory:
+### StockStudio (Agents)
+
+Six of these skills ship built into StockStudio 5.0 and work out of the box.
+To add another one (e.g. `stock-video-research`), open **Agents → Skills →
+Open skills folder** and copy the skill folder in:
+
+```bash
+# Windows (PowerShell)
+Copy-Item -Recurse skills\stock-video-research "$env:USERPROFILE\.stockstudio\agents\skills\"
+
+# macOS / Linux
+cp -r skills/stock-video-research ~/.stockstudio/agents/skills/
+```
+
+The agent picks it up on your next message. The folder name must match the
+`name` in the front-matter, and `name:` and `description:` must each stay on
+one line.
+
+### Other agents
 
 ```bash
 # Claude Code (per-user)
